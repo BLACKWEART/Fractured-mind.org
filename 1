@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractured Mind: Beyond Silence</title>
+
+    <!-- Хоррор-шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Анимированный туман */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: url('https://i.ibb.co/0F8ZC38/fog-texture.png') repeat;
+            opacity: 0.15;
+            animation: moveFog 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveFog {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-50%, -50%); }
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        h1 {
+            font-family: 'Creepster', cursive;
+            font-size: 4rem;
+            color: crimson;
+            animation: flicker 2s infinite, glitch 1.5s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.4; }
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff0000, -2px -2px #0000ff; }
+            50% { text-shadow: -2px -2px #ff0000, 2px 2px #0000ff; }
+            100% { text-shadow: 2px 2px #ff0000, -2px -2px #0000ff; }
+        }
+
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid crimson;
+            border-right: 3px solid crimson;
+            margin-bottom: 30px;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: crimson;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: darkred;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fractured Mind: Beyond Silence</h1>
+        <p>Погрузись в мир тьмы и страха</p>
+    </header>
+
+    <section>
+        <h2>О игре</h2>
+        <p>Fractured Mind: Beyond Silence — атмосферный хоррор, где твой разум — твой главный враг. 
+        Исследуй заброшенные места, избегай чудовищ и сохрани рассудок, чтобы выжить.</p>
+    </section>
+
+    <section>
+        <h2>Персонажи</h2>
+        <ul>
+            <li><b>Андрей</b> — главный герой, обычный человек с тайной в прошлом.</li>
+            <li><b>Шёпот</b> — существо, которое искажает реальность.</li>
+            <li><b>Говорящий</b> — загадочный голос, ведущий к спасению или гибели.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Скриншоты</h2>
+        <p>Здесь будут скриншоты из игры...</p>
+    </section>
+
+    <section>
+        <a href="#" class="btn">Скачать</a>
+    </section>
+
+    <footer>
+        &copy; 2025 Fractured Mind Team
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            const trigger = window.innerHeight / 1.3;
+            sections.forEach(section => {
+                const top = section.getBoundingClientRect().top;
+                if (top < trigger) section.classList.add('show');
+            });
+        });
+    </script>
+</body>
+</html>
